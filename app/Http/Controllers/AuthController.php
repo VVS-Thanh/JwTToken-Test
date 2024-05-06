@@ -57,7 +57,7 @@ class AuthController extends Controller
             if(!$user){
                 return response()->json(['error' => 'User Not Found'], 404);
             }
-
+            auth()->invalidate();
             $token = auth('api')->login($user);
             $refreshToken = $this -> createRefreshToken();
 
